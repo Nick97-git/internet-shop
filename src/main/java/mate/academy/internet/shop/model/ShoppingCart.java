@@ -32,7 +32,7 @@ public class ShoppingCart {
     public String toString() {
         return "ShoppingCart{"
                 + "id=" + id
-                + ", items=" +products
+                + ", products=" + products
                 + ", user=" + user
                 + '}';
     }
