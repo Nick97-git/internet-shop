@@ -2,7 +2,6 @@ package mate.academy.internet.shop.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import mate.academy.internet.shop.model.Bucket;
 import mate.academy.internet.shop.model.Item;
 import mate.academy.internet.shop.model.Order;
