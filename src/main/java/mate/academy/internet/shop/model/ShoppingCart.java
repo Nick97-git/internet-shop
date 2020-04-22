@@ -2,13 +2,13 @@ package mate.academy.internet.shop.model;
 
 import java.util.List;
 
-public class Bucket {
+public class ShoppingCart {
     private Long id;
-    private List<Item> items;
+    private List<Product> products;
     private User user;
 
-    public Bucket(List<Item> items, User user) {
-        this.items = items;
+    public ShoppingCart(List<Product> products, User user) {
+        this.products = products;
         this.user = user;
     }
 
@@ -18,14 +18,6 @@ public class Bucket {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
     }
 
     public User getUser() {
@@ -38,10 +30,18 @@ public class Bucket {
 
     @Override
     public String toString() {
-        return "Bucket{"
+        return "ShoppingCart{"
                 + "id=" + id
-                + ", items=" + items
+                + ", items=" +products
                 + ", user=" + user
                 + '}';
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

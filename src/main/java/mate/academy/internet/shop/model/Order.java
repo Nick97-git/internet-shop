@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Order {
     private Long id;
-    private List<Item> items;
+    private List<Product> products;
     private User user;
 
-    public Order(List<Item> items, User user) {
-        this.items = items;
+    public Order(List<Product> products, User user) {
+        this.products = products;
         this.user = user;
     }
 
@@ -20,12 +20,12 @@ public class Order {
         this.id = id;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public User getUser() {
@@ -40,7 +40,7 @@ public class Order {
     public String toString() {
         return "Order{"
                 + "id=" + id
-                + ", items=" + items
+                + ", products=" + products
                 + ", user=" + user
                 + '}';
     }

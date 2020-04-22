@@ -2,24 +2,24 @@ package mate.academy.internet.shop.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import mate.academy.internet.shop.model.Bucket;
-import mate.academy.internet.shop.model.Item;
 import mate.academy.internet.shop.model.Order;
+import mate.academy.internet.shop.model.Product;
+import mate.academy.internet.shop.model.ShoppingCart;
 import mate.academy.internet.shop.model.User;
 
 public class Storage {
-    public static List<Item> items = new ArrayList<>();
+    public static List<Product> products = new ArrayList<>();
     public static List<User> users = new ArrayList<>();
     public static List<Order> orders = new ArrayList<>();
-    public static List<Bucket> buckets = new ArrayList<>();
-    private static Long itemId = 0L;
+    public static List<ShoppingCart> shoppingCarts = new ArrayList<>();
+    private static Long productId = 0L;
     private static Long userId = 0L;
-    private static Long bucketId = 0L;
+    private static Long cartId = 0L;
     private static Long orderId = 0L;
 
-    public static void addItem(Item item) {
-        item.setId(++itemId);
-        items.add(item);
+    public static void addProduct(Product product) {
+        product.setId(++productId);
+        products.add(product);
     }
 
     public static void addUser(User user) {
@@ -32,8 +32,8 @@ public class Storage {
         orders.add(order);
     }
 
-    public static void addBucket(Bucket bucket) {
-        bucket.setId(++bucketId);
-        buckets.add(bucket);
+    public static void addShoppingCart(ShoppingCart shoppingCart) {
+        shoppingCart.setId(++cartId);
+        shoppingCarts.add(shoppingCart);
     }
 }
