@@ -1,8 +1,6 @@
 package mate.academy.internet.shop.service.impl;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import mate.academy.internet.shop.dao.ItemDao;
 import mate.academy.internet.shop.lib.Inject;
 import mate.academy.internet.shop.lib.Service;

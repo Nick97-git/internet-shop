@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.IntStream;
-
 import mate.academy.internet.shop.dao.ItemDao;
 import mate.academy.internet.shop.dao.Storage;
 import mate.academy.internet.shop.lib.Dao;
