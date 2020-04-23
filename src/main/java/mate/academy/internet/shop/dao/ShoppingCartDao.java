@@ -12,7 +12,7 @@ public interface ShoppingCartDao {
 
     List<Product> getAllProducts(ShoppingCart shoppingCart);
 
-    void update(ShoppingCart shoppingCart);
+    ShoppingCart update(ShoppingCart shoppingCart);
 
     ShoppingCart create(ShoppingCart shoppingCart);
 }
