@@ -2,7 +2,6 @@ package mate.academy.internet.shop.dao;
 
 import java.util.List;
 import java.util.Optional;
-
 import mate.academy.internet.shop.model.Product;
 import mate.academy.internet.shop.model.ShoppingCart;
 
