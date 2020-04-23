@@ -40,9 +40,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
-        boolean isExist = Storage.shoppingCarts.stream()
-                .anyMatch(cart -> cart.getId().equals(shoppingCart.getId()));
-        if (!isExist) {
+        if (shoppingCart.getId() == null) {
             Storage.addShoppingCart(shoppingCart);
         }
         return shoppingCart;
