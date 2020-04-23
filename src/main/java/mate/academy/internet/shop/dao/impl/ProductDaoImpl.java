@@ -1,7 +1,6 @@
 package mate.academy.internet.shop.dao.impl;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import mate.academy.internet.shop.dao.ProductDao;
@@ -41,9 +40,6 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean delete(Long id) {
-        Product product = get(id).orElseThrow(
-                () -> new NoSuchElementException("Can't find product with such id " + id));
-        Storage.products.remove(product);
-        return true;
+        return Storage.products.removeIf(product -> product.getId().equals(id));
     }
 }
