@@ -2,6 +2,7 @@ package mate.academy.internet.shop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import mate.academy.internet.shop.dao.ShoppingCartDao;
 import mate.academy.internet.shop.dao.Storage;
@@ -25,7 +26,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         return Storage.shoppingCarts
                 .stream()
                 .filter(cart -> cart.getId().equals(shoppingCart.getId()))
-                .findFirst().get().getProducts();
+                .flatMap(cart -> cart.getProducts().stream())
+                .collect(Collectors.toList());
     }
 
     @Override
