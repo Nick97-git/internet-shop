@@ -47,4 +47,17 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         }
         return shoppingCart;
     }
+
+    @Override
+    public Optional<ShoppingCart> get(Long id) {
+        return Storage.shoppingCarts
+                .stream()
+                .filter(cart -> cart.getId().equals(id))
+                .findFirst();
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return Storage.shoppingCarts.removeIf(cart -> cart.getId().equals(id));
+    }
 }

@@ -14,4 +14,8 @@ public interface ShoppingCartDao {
     ShoppingCart update(ShoppingCart shoppingCart);
 
     ShoppingCart create(ShoppingCart shoppingCart);
+
+    Optional<ShoppingCart> get(Long id);
+
+    boolean delete(Long id);
 }
