@@ -8,14 +8,18 @@ import mate.academy.internet.shop.model.Order;
 import mate.academy.internet.shop.model.Product;
 import mate.academy.internet.shop.model.User;
 import mate.academy.internet.shop.service.OrderService;
+import mate.academy.internet.shop.service.ShoppingCartService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
     @Inject
     private OrderDao orderDao;
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
     @Override
     public Order completeOrder(List<Product> products, User user) {
+        shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
         return orderDao.create(products, user);
     }
 
