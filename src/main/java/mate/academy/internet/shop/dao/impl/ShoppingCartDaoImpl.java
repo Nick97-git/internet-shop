@@ -2,32 +2,31 @@ package mate.academy.internet.shop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import mate.academy.internet.shop.dao.ShoppingCartDao;
 import mate.academy.internet.shop.dao.Storage;
 import mate.academy.internet.shop.lib.Dao;
-import mate.academy.internet.shop.model.Product;
+import mate.academy.internet.shop.lib.Inject;
 import mate.academy.internet.shop.model.ShoppingCart;
+import mate.academy.internet.shop.service.UserService;
 
 @Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
+    @Inject
+    private UserService userService;
 
     @Override
     public Optional<ShoppingCart> getByUserId(Long userId) {
-        return Storage.shoppingCarts
-                .stream()
-                .filter(cart -> cart.getUser().getId().equals(userId))
-                .findFirst();
+        return Optional.of(getAll().stream()
+                .filter(shoppingCart -> shoppingCart.getUser().getId().equals(userId))
+                .findFirst()
+                .orElse(
+                        create(new ShoppingCart(userService.get(userId)))));
     }
 
     @Override
-    public List<Product> getAllProducts(ShoppingCart shoppingCart) {
-        return Storage.shoppingCarts
-                .stream()
-                .filter(cart -> cart.getId().equals(shoppingCart.getId()))
-                .flatMap(cart -> cart.getProducts().stream())
-                .collect(Collectors.toList());
+    public List<ShoppingCart> getAll() {
+        return Storage.shoppingCarts;
     }
 
     @Override
@@ -40,9 +39,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
-        if (shoppingCart.getId() == null) {
-            Storage.addShoppingCart(shoppingCart);
-        }
+        Storage.addShoppingCart(shoppingCart);
         return shoppingCart;
     }
 

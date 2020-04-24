@@ -26,7 +26,7 @@ public class Application {
 
         ShoppingCartService shoppingCartService =
                 (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
-        ShoppingCart shoppingCart = new ShoppingCart(user);
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(user.getId());
         shoppingCartService.addProduct(shoppingCart, product3);
         shoppingCartService.addProduct(shoppingCart, product1);
         shoppingCartService.getAllProducts(shoppingCart)
