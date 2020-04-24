@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
     public Order completeOrder(List<Product> products, User user) {
         List<Product> productList = new ArrayList<>(products);
         shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
-        return orderDao.create(new Order(productList, user));
+        return create(new Order(productList, user));
     }
 
     @Override
@@ -31,13 +31,23 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrder(Long id) {
+    public Order get(Long id) {
         return orderDao.get(id).get();
+    }
+
+    @Override
+    public Order create(Order order) {
+        return orderDao.create(order);
     }
 
     @Override
     public List<Order> getAll() {
         return orderDao.getAll();
+    }
+
+    @Override
+    public Order update(Order order) {
+        return orderDao.update(order);
     }
 
     @Override
