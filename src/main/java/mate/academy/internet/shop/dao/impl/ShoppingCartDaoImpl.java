@@ -6,23 +6,10 @@ import java.util.stream.IntStream;
 import mate.academy.internet.shop.dao.ShoppingCartDao;
 import mate.academy.internet.shop.dao.Storage;
 import mate.academy.internet.shop.lib.Dao;
-import mate.academy.internet.shop.lib.Inject;
 import mate.academy.internet.shop.model.ShoppingCart;
-import mate.academy.internet.shop.service.UserService;
 
 @Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
-    @Inject
-    private UserService userService;
-
-    @Override
-    public Optional<ShoppingCart> getByUserId(Long userId) {
-        return Optional.of(getAll().stream()
-                .filter(shoppingCart -> shoppingCart.getUser().getId().equals(userId))
-                .findFirst()
-                .orElse(
-                        create(new ShoppingCart(userService.get(userId)))));
-    }
 
     @Override
     public List<ShoppingCart> getAll() {

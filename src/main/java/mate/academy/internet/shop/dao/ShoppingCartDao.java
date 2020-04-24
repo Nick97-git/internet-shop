@@ -6,8 +6,6 @@ import mate.academy.internet.shop.model.ShoppingCart;
 
 public interface ShoppingCartDao {
 
-    Optional<ShoppingCart> getByUserId(Long userId);
-
     ShoppingCart update(ShoppingCart shoppingCart);
 
     ShoppingCart create(ShoppingCart shoppingCart);
