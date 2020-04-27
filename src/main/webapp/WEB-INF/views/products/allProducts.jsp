@@ -30,7 +30,7 @@
                 <c:out value="${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/shopping-cart/add?cart_id=1&product_id=${product.id}">
+                <a href="${pageContext.request.contextPath}/shopping-cart/add?user_id=1&product_id=${product.id}">
                     Add
                 </a>
             </td>
