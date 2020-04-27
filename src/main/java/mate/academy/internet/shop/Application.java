@@ -10,7 +10,7 @@ import mate.academy.internet.shop.service.ShoppingCartService;
 import mate.academy.internet.shop.service.UserService;
 
 public class Application {
-    private static Injector injector = Injector.getInstance("mate.academy.internet.shop");
+    private static final Injector injector = Injector.getInstance("mate.academy.internet.shop");
 
     public static void main(String[] args) {
         UserService userService = (UserService) injector.getInstance(UserService.class);
