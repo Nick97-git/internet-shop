@@ -7,6 +7,7 @@
 <body>
 <h1>Order ID: ${orderId}</h1>
 <h2>User name: ${name}</h2>
+<h3>All products: </h3>
 <table border="1">
     <tr>
         <th>ID</th>
