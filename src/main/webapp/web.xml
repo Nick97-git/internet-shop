@@ -25,7 +25,7 @@
 
     <servlet>
         <servlet-name>allUsers</servlet-name>
-        <servlet-class>mate.academy.internet.shop.controllers.UsersController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controllers.GetAllUsersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -35,7 +35,7 @@
 
     <servlet>
         <servlet-name>allProducts</servlet-name>
-        <servlet-class>mate.academy.internet.shop.controllers.ProductsController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controllers.GetAllProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -65,7 +65,7 @@
 
     <servlet>
         <servlet-name>showProducts</servlet-name>
-        <servlet-class>mate.academy.internet.shop.controllers.ShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controllers.ShowShoppingCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>

@@ -10,9 +10,9 @@ import mate.academy.internet.shop.lib.Injector;
 import mate.academy.internet.shop.model.User;
 import mate.academy.internet.shop.service.UserService;
 
-public class UsersController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internet.shop");
-    private final UserService userService = (UserService) injector.getInstance(UserService.class);
+public class GetAllUsersController extends HttpServlet {
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
+    private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

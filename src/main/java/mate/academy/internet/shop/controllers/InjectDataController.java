@@ -12,9 +12,9 @@ import mate.academy.internet.shop.service.ProductService;
 import mate.academy.internet.shop.service.UserService;
 
 public class InjectDataController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internet.shop");
-    private final UserService userService = (UserService) injector.getInstance(UserService.class);
-    private final ProductService productService = (ProductService) injector
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
+    private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
+    private final ProductService productService = (ProductService) INJECTOR
             .getInstance(ProductService.class);
 
     @Override

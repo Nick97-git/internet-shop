@@ -9,10 +9,10 @@ import mate.academy.internet.shop.lib.Injector;
 import mate.academy.internet.shop.model.ShoppingCart;
 import mate.academy.internet.shop.service.ShoppingCartService;
 
-public class ShoppingCartController extends HttpServlet {
+public class ShowShoppingCartController extends HttpServlet {
     private static final Long USER_ID = 1L;
-    private static final Injector injector = Injector.getInstance("mate.academy.internet.shop");
-    private final ShoppingCartService shoppingCartService = (ShoppingCartService) injector
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
+    private final ShoppingCartService shoppingCartService = (ShoppingCartService) INJECTOR
             .getInstance(ShoppingCartService.class);
 
     @Override
