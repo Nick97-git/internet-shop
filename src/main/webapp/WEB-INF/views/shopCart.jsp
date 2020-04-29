@@ -33,7 +33,7 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/orders/create?user_id=1">
+<a href="${pageContext.request.contextPath}/orders/complete?user_id=1">
     Create new Order
 </a>
 </body>

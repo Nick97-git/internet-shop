@@ -5,8 +5,8 @@
     <title>Details of Order</title>
 </head>
 <body>
-<h1>Order ID: ${orderId}</h1>
-<h2>User name: ${name}</h2>
+<h1>Order ID: ${order.id}</h1>
+<h2>User name: ${order.user.name}</h2>
 <h3>All products: </h3>
 <table border="1">
     <tr>
@@ -15,7 +15,7 @@
         <th>Price</th>
     </tr>
 
-    <c:forEach var="product" items="${products}">
+    <c:forEach var="product" items="${order.products}">
         <tr>
             <td>
                 <c:out value="${product.id}"/>
