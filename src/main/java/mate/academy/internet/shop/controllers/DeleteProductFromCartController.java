@@ -11,21 +11,21 @@ import mate.academy.internet.shop.model.ShoppingCart;
 import mate.academy.internet.shop.service.ProductService;
 import mate.academy.internet.shop.service.ShoppingCartService;
 
-public class AddProductToCartController extends HttpServlet {
+public class DeleteProductFromCartController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
-    private final ProductService productService = (ProductService) INJECTOR
-            .getInstance(ProductService.class);
     private final ShoppingCartService shoppingCartService = (ShoppingCartService) INJECTOR
             .getInstance(ShoppingCartService.class);
+    private final ProductService productService = (ProductService) INJECTOR
+            .getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String userId = req.getParameter("user_id");
         String productId = req.getParameter("product_id");
-        ShoppingCart shoppingCart = shoppingCartService.getByUserId(Long.valueOf(userId));
         Product product = productService.get(Long.valueOf(productId));
-        shoppingCartService.addProduct(shoppingCart, product);
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(Long.valueOf(userId));
+        shoppingCartService.deleteProduct(shoppingCart, product);
         resp.sendRedirect(req.getContextPath() + "/shopping-cart/all");
     }
 }

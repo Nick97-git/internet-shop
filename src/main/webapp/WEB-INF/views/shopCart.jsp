@@ -11,6 +11,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Delete</th>
     </tr>
 
     <c:forEach var="product" items="${products}">
@@ -24,8 +25,16 @@
             <td>
                 <c:out value="${product.price}"/>
             </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/shopping-cart/delete?user_id=1&product_id=${product.id}">
+                    Delete
+                </a>
+            </td>
         </tr>
     </c:forEach>
 </table>
+<a href="${pageContext.request.contextPath}/orders/complete?user_id=1">
+    Create new Order
+</a>
 </body>
 </html>
