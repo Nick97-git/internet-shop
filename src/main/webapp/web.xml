@@ -75,7 +75,7 @@
 
     <servlet>
         <servlet-name>addProductToBucket</servlet-name>
-        <servlet-class>mate.academy.internet.shop.controllers.AddProductToBucketController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controllers.AddProductToCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>

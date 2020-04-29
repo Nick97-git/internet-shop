@@ -6,17 +6,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internet.shop.lib.Injector;
-import mate.academy.internet.shop.model.Product;
 import mate.academy.internet.shop.model.ShoppingCart;
 import mate.academy.internet.shop.service.ProductService;
 import mate.academy.internet.shop.service.ShoppingCartService;
 
-public class AddProductToBucketController extends HttpServlet {
+public class PutProductToCartController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
-    private final ProductService productService = (ProductService) INJECTOR
-            .getInstance(ProductService.class);
     private final ShoppingCartService shoppingCartService = (ShoppingCartService) INJECTOR
             .getInstance(ShoppingCartService.class);
+    private final ProductService productService = (ProductService) INJECTOR
+            .getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -24,8 +23,7 @@ public class AddProductToBucketController extends HttpServlet {
         String userId = req.getParameter("user_id");
         String productId = req.getParameter("product_id");
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(Long.valueOf(userId));
-        Product product = productService.get(Long.valueOf(productId));
-        shoppingCartService.addProduct(shoppingCart, product);
+        shoppingCartService.addProduct(shoppingCart, productService.get(Long.valueOf(productId)));
         resp.sendRedirect(req.getContextPath() + "/shopping-cart/all");
     }
 }
