@@ -33,9 +33,8 @@
         </tr>
     </c:forEach>
 </table>
-<form method="post" action="${pageContext.request.contextPath}/orders/create?user_id=1">
-    <br/>
-    <button type="submit">Create new Order</button>
-</form>
+<a href="${pageContext.request.contextPath}/orders/create?user_id=1">
+    Create new Order
+</a>
 </body>
 </html>

@@ -21,7 +21,7 @@ public class CreateOrderController extends HttpServlet {
             .getInstance(ShoppingCartService.class);
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long userId = Long.valueOf(req.getParameter("user_id"));
         User user = userService.get(userId);
