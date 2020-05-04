@@ -33,7 +33,7 @@
                 <c:out value="${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/shopping-cart/delete?user_id=1&product_id=${product.id}">
+                <a href="${pageContext.request.contextPath}/shopping-cart/delete?product_id=${product.id}">
                     Delete
                 </a>
             </td>
@@ -42,7 +42,7 @@
     </tbody>
 </table>
 <p style="text-align: center">
-<a class="btn btn-info" data-toggle="collapse" href="${pageContext.request.contextPath}/orders/complete?user_id=1" role="button" aria-expanded="false" aria-controls="collapseExample">
+<a class="btn btn-info" data-toggle="collapse" href="${pageContext.request.contextPath}/orders/complete" role="button" aria-expanded="false" aria-controls="collapseExample">
     Create new Order
 </a>
 </p>

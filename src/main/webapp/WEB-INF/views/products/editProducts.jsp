@@ -33,7 +33,7 @@
                 <c:out value="${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/products/delete?user_id=1&product_id=${product.id}">
+                <a href="${pageContext.request.contextPath}/products/delete?product_id=${product.id}">
                     Delete
                 </a>
             </td>
