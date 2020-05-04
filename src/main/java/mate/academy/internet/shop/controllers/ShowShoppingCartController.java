@@ -5,12 +5,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import mate.academy.internet.shop.lib.Injector;
 import mate.academy.internet.shop.model.ShoppingCart;
 import mate.academy.internet.shop.service.ShoppingCartService;
 
 public class ShowShoppingCartController extends HttpServlet {
-    private static final Long USER_ID = 1L;
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
     private final ShoppingCartService shoppingCartService = (ShoppingCartService) INJECTOR
             .getInstance(ShoppingCartService.class);
@@ -18,7 +18,9 @@ public class ShowShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        ShoppingCart shoppingCart = shoppingCartService.getByUserId(USER_ID);
+        HttpSession session = req.getSession();
+        Long userId = (Long) session.getAttribute("user_id");
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
         req.setAttribute("products", shoppingCart.getProducts());
         req.getRequestDispatcher("/WEB-INF/views/shopCart.jsp").forward(req, resp);
     }
