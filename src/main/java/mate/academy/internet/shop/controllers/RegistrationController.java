@@ -6,13 +6,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mate.academy.internet.shop.exceptions.DataProcessingException;
 import mate.academy.internet.shop.lib.Injector;
 import mate.academy.internet.shop.model.Role;
 import mate.academy.internet.shop.model.User;
 import mate.academy.internet.shop.service.UserService;
+import org.apache.log4j.Logger;
 
 public class RegistrationController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
+    private static final Logger LOGGER = Logger.getLogger(GetAllUsersController.class);
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
@@ -31,7 +34,12 @@ public class RegistrationController extends HttpServlet {
         if (password.equals(repeatPassword)) {
             User user = new User(name, login, password);
             user.setRoles(Set.of(Role.of("USER")));
-            userService.create(user);
+            try {
+                userService.create(user);
+            } catch (DataProcessingException e) {
+                LOGGER.error(e);
+                req.getRequestDispatcher("/WEB-INF/views/processError.jsp").forward(req, resp);
+            }
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "Your password and repeat password are not the same!!!");

@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mate.academy.internet.shop.exceptions.DataProcessingException;
 import mate.academy.internet.shop.lib.Injector;
 import mate.academy.internet.shop.service.UserService;
 
@@ -32,9 +33,13 @@ public class AuthenticationFilter implements Filter {
             return;
         }
         Long userId = (Long) req.getSession().getAttribute("user_id");
-        if (userId == null || userService.get(userId) == null) {
-            resp.sendRedirect("/login");
-            return;
+        try {
+            if (userId == null || userService.get(userId) == null) {
+                resp.sendRedirect("/login");
+                return;
+            }
+        } catch (DataProcessingException e) {
+            e.printStackTrace();
         }
         chain.doFilter(req, resp);
     }
