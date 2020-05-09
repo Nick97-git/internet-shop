@@ -22,8 +22,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Product create(Product product) {
-        String query = "INSERT INTO internet_shop.products (name, price) values(?,?);";
-        try (Connection connection = ConnectionUtil.getConnection();) {
+        String query = "INSERT INTO internet_shop.products (name, price) values(?,?);";try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection
                     .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, product.getName());
