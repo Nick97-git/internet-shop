@@ -20,9 +20,9 @@ import org.apache.log4j.Logger;
 
 public class AuthorizationFilter implements Filter {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internet.shop");
+    private static final Logger LOGGER = Logger.getLogger(AuthorizationFilter.class);
     private final Map<String, Set<Role.RoleName>> protectedUrls = new HashMap<>();
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
-    private final Logger logger = Logger.getLogger(AuthorizationFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -58,7 +58,7 @@ public class AuthorizationFilter implements Filter {
         if (isAuthorized(user, protectedUrls.get(url))) {
             chain.doFilter(req, resp);
         } else {
-            logger.warn("User with id " + userId + " tried to have access to this url: " + url);
+            LOGGER.warn("User with id " + userId + " tried to have access to this url: " + url);
             req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
         }
     }

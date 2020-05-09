@@ -1,6 +1,7 @@
 package mate.academy.internet.shop.controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +32,9 @@ public class InjectDataController extends HttpServlet {
         userService.create(admin);
         userService.create(user);
         userService.create(superUser);
-        productService.create(new Product("bread",14));
-        productService.create(new Product("milk",30));
-        productService.create(new Product("coca-cola",25));
+        productService.create(new Product("bread", new BigDecimal(14)));
+        productService.create(new Product("milk", new BigDecimal(30)));
+        productService.create(new Product("coca-cola", new BigDecimal(25)));
         req.getRequestDispatcher("/WEB-INF/views/users/injectData.jsp").forward(req, resp);
     }
 }
