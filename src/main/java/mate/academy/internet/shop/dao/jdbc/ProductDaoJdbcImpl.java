@@ -43,7 +43,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Optional<Product> get(Long id) {
         String query = "SELECT * from internet_shop.products where product_id=?;";
-        try (Connection connection = ConnectionUtil.getConnection();) {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -79,7 +79,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Product update(Product product) {
         String query = "UPDATE internet_shop.products SET name=?, price=? WHERE product_id=?;";
-        try (Connection connection = ConnectionUtil.getConnection();) {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, product.getName());
             statement.setBigDecimal(2, product.getPrice());
@@ -96,7 +96,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public boolean delete(Long id) {
         String query = "DELETE FROM internet_shop.products WHERE product_id=?;";
-        try (Connection connection = ConnectionUtil.getConnection();) {
+        try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             statement.executeUpdate();
