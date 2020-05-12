@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order completeOrder(List<Product> products, User user) {
-        Order order = create(new Order(new ArrayList<>(products), user));
+        Order order = create(new Order(new ArrayList<>(products), user.getId()));
         shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
         return order;
     }

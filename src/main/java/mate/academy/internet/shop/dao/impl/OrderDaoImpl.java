@@ -6,11 +6,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import mate.academy.internet.shop.dao.OrderDao;
 import mate.academy.internet.shop.dao.Storage;
-import mate.academy.internet.shop.lib.Dao;
 import mate.academy.internet.shop.model.Order;
 import mate.academy.internet.shop.model.User;
 
-@Dao
 public class OrderDaoImpl implements OrderDao {
 
     @Override
@@ -22,7 +20,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getUserOrders(User user) {
         return Storage.orders.stream()
-                .filter(order -> order.getUser().getId().equals(user.getId()))
+                .filter(order -> order.getUserId().equals(user.getId()))
                 .collect(Collectors.toList());
     }
 

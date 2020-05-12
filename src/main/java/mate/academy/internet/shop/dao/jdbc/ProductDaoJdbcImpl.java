@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 
 @Dao
 public class ProductDaoJdbcImpl implements ProductDao {
-    private static final Logger LOGGER = Logger.getLogger(ConnectionUtil.class);
+    private static final Logger LOGGER = Logger.getLogger(ProductDaoJdbcImpl.class);
 
     @Override
     public Product create(Product product) {
@@ -112,10 +112,6 @@ public class ProductDaoJdbcImpl implements ProductDao {
         Long productId = resultSet.getLong("product_id");
         String name = resultSet.getString("name");
         BigDecimal price = resultSet.getBigDecimal("price");
-        Product product = new Product();
-        product.setId(productId);
-        product.setName(name);
-        product.setPrice(price);
-        return product;
+        return new Product(productId, name, price);
     }
 }
