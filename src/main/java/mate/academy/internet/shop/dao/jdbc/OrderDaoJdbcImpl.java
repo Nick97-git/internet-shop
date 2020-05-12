@@ -76,7 +76,6 @@ public class OrderDaoJdbcImpl implements OrderDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Getting of order with id="
                     + id + " is failed", e);
-
         }
     }
 

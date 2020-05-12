@@ -55,7 +55,6 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Getting of shopping cart with id="
                     + id + " is failed", e);
-
         }
     }
 

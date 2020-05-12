@@ -77,7 +77,6 @@ public class UserDaoJdbcImpl implements UserDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Getting of user with id="
                     + id + " is failed", e);
-
         }
     }
 
