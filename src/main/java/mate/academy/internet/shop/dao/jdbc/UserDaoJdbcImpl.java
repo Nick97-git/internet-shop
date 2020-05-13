@@ -108,6 +108,8 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setString(3, user.getPassword());
             statement.setLong(4, user.getId());
             statement.executeUpdate();
+            deleteRolesOfUser(user);
+            addRolesForUser(user);
             LOGGER.info("User with id=" + user.getId() + " was updated");
             return user;
         } catch (SQLException e) {
@@ -143,6 +145,17 @@ public class UserDaoJdbcImpl implements UserDao {
             }
         } catch (SQLException e) {
             throw new DataProcessingException("Can't add role for user", e);
+        }
+    }
+
+    private void deleteRolesOfUser(User user) {
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            String query = "DELETE FROM internet_shop.users_roles WHERE user_id=?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, user.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataProcessingException("Can't delete roles of user", e);
         }
     }
 

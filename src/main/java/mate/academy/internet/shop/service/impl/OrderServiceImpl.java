@@ -31,6 +31,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Long getOrderAmount(Order order) {
+        return order.getProducts().stream()
+                .mapToLong(o -> o.getPrice().longValue())
+                .sum();
+    }
+
+    @Override
     public Order get(Long id) {
         return orderDao.get(id).get();
     }

@@ -35,7 +35,7 @@
         </tr>
     </c:forEach>
     <tr>
-        <td colspan="3">Sum of order: ${sum}</td>
+        <td colspan="3">Amount of order: ${amount}</td>
     </tr>
     </tbody>
 </table>
