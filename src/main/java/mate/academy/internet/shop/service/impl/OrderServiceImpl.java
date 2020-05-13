@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order completeOrder(List<Product> products, User user) {
-        Order order = create(new Order(new ArrayList<>(products), user));
+        Order order = create(new Order(new ArrayList<>(products), user.getId()));
         shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
         return order;
     }
@@ -28,6 +28,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getUserOrders(User user) {
         return orderDao.getUserOrders(user);
+    }
+
+    @Override
+    public Long getOrderAmount(Order order) {
+        return order.getProducts().stream()
+                .mapToLong(o -> o.getPrice().longValue())
+                .sum();
     }
 
     @Override

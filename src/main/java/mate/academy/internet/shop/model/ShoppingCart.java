@@ -6,11 +6,17 @@ import java.util.List;
 public class ShoppingCart {
     private Long id;
     private List<Product> products;
-    private User user;
+    private Long userId;
 
-    public ShoppingCart(User user) {
+    public ShoppingCart(Long userId) {
         products = new ArrayList<>();
-        this.user = user;
+        this.userId = userId;
+    }
+
+    public ShoppingCart(Long id, Long userId, List<Product> products) {
+        this.id = id;
+        this.userId = userId;
+        this.products = products;
     }
 
     public Long getId() {
@@ -21,12 +27,20 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -34,15 +48,7 @@ public class ShoppingCart {
         return "ShoppingCart{"
                 + "id=" + id
                 + ", products=" + products
-                + ", user=" + user
+                + ", userId=" + userId
                 + '}';
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 }

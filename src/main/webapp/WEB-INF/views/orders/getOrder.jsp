@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1 style="text-align: center; margin-top: 100px">Order ID: ${order.id}</h1>
-<h2 style="text-align: center">User name: ${order.user.name}</h2>
+<h2 style="text-align: center">User ID: ${order.userId}</h2>
 <table class="table table-striped table-dark" style="width: 500px; margin-top: 25px; margin-left: auto; margin-right: auto">
     <thead>
     <tr>
@@ -34,6 +34,9 @@
             </td>
         </tr>
     </c:forEach>
+    <tr>
+        <td colspan="3">Amount of order: ${amount}</td>
+    </tr>
     </tbody>
 </table>
 </body>
