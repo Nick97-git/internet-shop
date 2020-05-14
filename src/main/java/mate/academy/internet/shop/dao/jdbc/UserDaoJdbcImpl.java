@@ -24,7 +24,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public Optional<User> findByLogin(String login) {
-        String query = "SELECT * from internet_shop.users where login=?;";
+        String query = "SELECT * from users where login=?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, login);
@@ -42,7 +42,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User create(User user) {
-        String query = "INSERT INTO internet_shop.users (name, login, password) values(?,?,?);";
+        String query = "INSERT INTO users (name, login, password) values(?,?,?);";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection
                     .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -64,7 +64,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public Optional<User> get(Long id) {
-        String query = "SELECT * from internet_shop.users where user_id=?;";
+        String query = "SELECT * from users where user_id=?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -83,7 +83,7 @@ public class UserDaoJdbcImpl implements UserDao {
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT * FROM internet_shop.users;";
+        String query = "SELECT * FROM users;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -99,7 +99,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User update(User user) {
-        String query = "UPDATE internet_shop.users "
+        String query = "UPDATE users "
                 + "SET name=?, login=?, password=? WHERE user_id=?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -120,7 +120,7 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM internet_shop.users WHERE user_id=?;";
+        String query = "DELETE FROM users WHERE user_id=?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -136,11 +136,11 @@ public class UserDaoJdbcImpl implements UserDao {
     private void addRolesForUser(User user) {
         try (Connection connection = ConnectionUtil.getConnection()) {
             for (Role role: user.getRoles()) {
-                String query = "INSERT INTO internet_shop.users_roles (user_id, role_id) "
+                String query = "INSERT INTO users_roles (user_id, role_id) "
                         + "values(?,?);";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setLong(1, user.getId());
-                statement.setLong(2, role.getId());
+                statement.setLong(2, getRoleId(role.getRoleName().name(), connection));
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -148,9 +148,18 @@ public class UserDaoJdbcImpl implements UserDao {
         }
     }
 
+    private Long getRoleId(String roleName, Connection connection) throws SQLException {
+        String query = "SELECT role_id from roles where role_name=?;";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, roleName);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet.getLong("role_id");
+    }
+
     private void deleteRolesOfUser(User user) {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "DELETE FROM internet_shop.users_roles WHERE user_id=?;";
+            String query = "DELETE FROM users_roles WHERE user_id=?;";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, user.getId());
             statement.executeUpdate();
