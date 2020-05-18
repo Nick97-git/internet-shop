@@ -7,6 +7,7 @@ import mate.academy.internet.shop.lib.Inject;
 import mate.academy.internet.shop.lib.Service;
 import mate.academy.internet.shop.model.User;
 import mate.academy.internet.shop.service.UserService;
+import mate.academy.internet.shop.util.HashUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,6 +16,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
+        user.setSalt(HashUtil.getSalt());
+        user.setPassword(HashUtil.hashPassword(user.getPassword(), user.getSalt()));
         return userDao.create(user);
     }
 
@@ -41,5 +44,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByLogin(String login) {
         return userDao.findByLogin(login);
+    }
+
+    @Override
+    public boolean isValid(String password, byte[] salt, String passwordFromDB) {
+        return HashUtil.hashPassword(password, salt).equals(passwordFromDB);
     }
 }
