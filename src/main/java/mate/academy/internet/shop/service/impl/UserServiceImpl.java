@@ -45,9 +45,4 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByLogin(String login) {
         return userDao.findByLogin(login);
     }
-
-    @Override
-    public boolean isValid(String password, byte[] salt, String passwordFromDB) {
-        return HashUtil.hashPassword(password, salt).equals(passwordFromDB);
-    }
 }

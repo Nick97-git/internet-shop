@@ -6,6 +6,4 @@ import mate.academy.internet.shop.model.User;
 public interface UserService extends GenericService<User, Long> {
 
     Optional<User> findByLogin(String login);
-
-    boolean isValid(String password, byte[] salt, String passwordFromDB);
 }
