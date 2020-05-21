@@ -55,8 +55,8 @@ public class UserDaoJdbcImpl implements UserDao {
             if (resultSet.next()) {
                 user.setId(resultSet.getLong(1));
             }
-            LOGGER.info("User with id=" + user.getId() + " was created");
             addRolesForUser(user);
+            LOGGER.info("User with id=" + user.getId() + " was created");
             return user;
         } catch (SQLException e) {
             throw new DataProcessingException("Creation of user is failed", e);
@@ -83,11 +83,11 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
-        List<User> users = new ArrayList<>();
         String query = "SELECT * FROM users;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
+            List<User> users = new ArrayList<>();
             while (resultSet.next()) {
                 users.add(getCopyOfUser(resultSet));
             }

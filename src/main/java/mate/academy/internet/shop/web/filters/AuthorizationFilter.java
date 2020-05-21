@@ -25,13 +25,13 @@ public class AuthorizationFilter implements Filter {
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         protectedUrls.put("/users/all", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/orders/complete", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/user/orders", Set.of(Role.RoleName.USER));
         protectedUrls.put("/products/edit", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/add", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/delete", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/orders/complete", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/user/orders", Set.of(Role.RoleName.USER));
         protectedUrls.put("/shopping-cart/products/add", Set.of(Role.RoleName.USER));
         protectedUrls.put("/shopping-cart/products/delete", Set.of(Role.RoleName.USER));
         protectedUrls.put("/shopping-cart/products", Set.of(Role.RoleName.USER));

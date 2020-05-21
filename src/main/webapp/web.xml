@@ -3,13 +3,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <servlet>
-        <servlet-name>index</servlet-name>
-        <servlet-class>mate.academy.internet.shop.controllers.IndexController</servlet-class>
+        <servlet-name>mainPage</servlet-name>
+        <servlet-class>mate.academy.internet.shop.controllers.MainPageController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>index</servlet-name>
+        <servlet-name>mainPage</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

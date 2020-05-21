@@ -24,12 +24,12 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     @Override
     public List<Order> getUserOrders(User user) {
-        List<Order> orders = new ArrayList<>();
         String query = "SELECT * from orders where user_id=?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, user.getId());
             ResultSet resultSet = statement.executeQuery();
+            List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
                 orders.add(getCopyOfOrder(resultSet));
             }
@@ -81,11 +81,11 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     @Override
     public List<Order> getAll() {
-        List<Order> orders = new ArrayList<>();
         String query = "SELECT * FROM orders;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
+            List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
                 orders.add(getCopyOfOrder(resultSet));
             }
@@ -145,11 +145,11 @@ public class OrderDaoJdbcImpl implements OrderDao {
                 + "FROM orders_products INNER JOIN products "
                 + "ON  orders_products.product_id=products.product_id \n"
                 + "WHERE orders_products.order_id = ?;";
-        List<Product> products = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, orderId);
             ResultSet resultSet = statement.executeQuery();
+            List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
                 Long productId = resultSet.getLong("product_id");
                 String name = resultSet.getString("name");

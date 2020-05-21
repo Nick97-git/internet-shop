@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Demo</title>
+    <title>Index</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
@@ -9,9 +9,9 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 style="text-align: center; margin-top: 100px">Your test data were added to DB!</h1>
-<form style="text-align: center" action="${pageContext.request.contextPath}/">
-    <button type="submit" class="btn btn-info">Go to the main page</button>
+<h1 style="text-align: center; margin-top: 100px">Welcome to Internet-Shop </h1>
+<form style="text-align: center" action="${pageContext.request.contextPath}/injectData">
+    <button type="submit" class="btn btn-info">Inject test data into the DB</button>
 </form>
 </body>
 </html>

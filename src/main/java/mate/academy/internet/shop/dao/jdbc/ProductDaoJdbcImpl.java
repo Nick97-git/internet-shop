@@ -61,11 +61,11 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public List<Product> getAll() {
-        List<Product> products = new ArrayList<>();
         String query = "SELECT * FROM products;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
+            List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
                 products.add(getCopyOfProduct(resultSet));
             }

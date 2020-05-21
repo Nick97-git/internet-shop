@@ -1,7 +1,6 @@
 package mate.academy.internet.shop.controllers;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +18,7 @@ public class AddProductToCartController extends HttpServlet {
             .getInstance(ShoppingCartService.class);
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long userId = (Long) req.getSession().getAttribute("user_id");
         String productId = req.getParameter("product_id");
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
