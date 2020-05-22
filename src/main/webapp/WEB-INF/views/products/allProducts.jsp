@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>List of Products</title>
@@ -10,7 +10,6 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 style="text-align: center; margin-top: 100px">Products: </h1>
 <table class="table table-striped table-dark" style="width: 500px; margin-top: 25px; margin-left: auto; margin-right: auto">
     <thead>
     <tr>
@@ -21,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="product" items="${products}">
+    <c:forEach var="product" items="${requestScope.products}">
         <tr>
             <td>
                 <c:out value="${product.id}"/>

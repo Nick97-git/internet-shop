@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Login</title>
@@ -14,7 +14,7 @@
         <div class="form-group" style="width: 300px">
             <label for="login" style="font-family: Garamond,serif; font-size: larger">Login</label>
             <input type="text" name="login" class="form-control" id="login">
-            <small id="emailHelp" style="color: red; font-family: Garamond,serif; font-size: larger">${errorMsg}</small>
+            <small id="emailHelp" style="color: red; font-family: Garamond,serif; font-size: larger">${requestScope.errorMsg}</small>
         </div>
         <div class="form-group">
             <label for="password" style="font-family: Garamond,serif; font-size: larger">Password</label>

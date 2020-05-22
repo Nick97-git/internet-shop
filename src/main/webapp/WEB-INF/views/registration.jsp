@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Registration</title>
@@ -22,7 +22,7 @@
         <div class="form-group">
             <label for="password" style="font-family: Garamond,serif; font-size: larger">Password</label>
             <input type="password" name="pwd" class="form-control" id="password">
-            <small id="pwdHelp" style="color: red; font-family: Garamond,serif; font-size: larger">${message}</small>
+            <small id="pwdHelp" style="color: red; font-family: Garamond,serif; font-size: larger">${requestScope.message}</small>
         </div>
         <div class="form-group">
             <label for="pwd-repeat" style="font-family: Garamond,serif; font-size: larger">Repeat password</label>
