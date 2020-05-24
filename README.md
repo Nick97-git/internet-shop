@@ -38,7 +38,7 @@ add as URL http://localhost:8080/
 
 4. Start MySQLWorkbench.
 
-5. At internet-shop.src.main.java.mate.academy.internet.shop.util.ConnectionUtil class use your username 
+5. At internet-shop.src.main.java.dev.internet.shop.util.ConnectionUtil class use your username 
 and password for your MySQLWorkbench to create a Connection.
 
 6. Run internet-shop.src.main.resources.init_db.sql to create all the tables required by this app.
