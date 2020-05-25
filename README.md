@@ -30,7 +30,7 @@ a list of all registered users and delete them.
 
 1. Open the project in your IDE.
 
-2. Add Java SDK 11 in Project Structure.
+2. Add Java SDK 11 or above in Project Structure.
 
 3. Configure Tomcat:
 add the artifact internet-shop:war exploded;
@@ -38,12 +38,12 @@ add as URL http://localhost:8080/
 
 4. Install MySQL if you don't have it and start MySQLWorkbench.
 
-5. At internet-shop.src.main.java.dev.internet.shop.util.ConnectionUtil class use your username 
+5. At dev.internet.shop.src.main.java.dev.internet.shop.util.ConnectionUtil class use your username 
 and password for your MySQLWorkbench to create a Connection.
 
-6. Run internet-shop.src.main.resources.init_db.sql to create all the tables required by this app.
+6. Run dev.internet.shop.src.main.resources.init_db.sql to create all the tables required by this app.
 
-7. Change a path to log file in internet-shop.src.main.resources.log4j.properties.
+7. Change a path to log file in dev.internet.shop.src.main.resources.log4j.properties.
 
 8. Run the project.
 
