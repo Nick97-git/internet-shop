@@ -30,13 +30,13 @@ a list of all registered users and delete them.
 
 1. Open the project in your IDE.
 
-2. Choose sdk 11.0.2 in Project Structure.
+2. Add Java SDK 11 in Project Structure.
 
 3. Configure Tomcat:
 add the artifact internet-shop:war exploded;
 add as URL http://localhost:8080/
 
-4. Start MySQLWorkbench.
+4. Install MySQL if you don't have it and start MySQLWorkbench.
 
 5. At internet-shop.src.main.java.dev.internet.shop.util.ConnectionUtil class use your username 
 and password for your MySQLWorkbench to create a Connection.

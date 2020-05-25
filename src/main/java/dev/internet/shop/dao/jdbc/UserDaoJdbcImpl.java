@@ -83,11 +83,11 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
+        List<User> users = new ArrayList<>();
         String query = "SELECT * FROM users;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-            List<User> users = new ArrayList<>();
             while (resultSet.next()) {
                 users.add(getCopyOfUser(resultSet));
             }

@@ -24,12 +24,12 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     @Override
     public List<Order> getUserOrders(User user) {
+        List<Order> orders = new ArrayList<>();
         String query = "SELECT * from orders where user_id=?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, user.getId());
             ResultSet resultSet = statement.executeQuery();
-            List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
                 orders.add(getCopyOfOrder(resultSet));
             }
@@ -141,6 +141,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
     }
 
     private List<Product> getProductsOfOrder(Long orderId) {
+        List<Product> products = new ArrayList<>();
         String query = "SELECT products.product_id, products.name, products.price "
                 + "FROM orders_products INNER JOIN products "
                 + "ON  orders_products.product_id=products.product_id \n"
@@ -149,7 +150,6 @@ public class OrderDaoJdbcImpl implements OrderDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, orderId);
             ResultSet resultSet = statement.executeQuery();
-            List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
                 Long productId = resultSet.getLong("product_id");
                 String name = resultSet.getString("name");

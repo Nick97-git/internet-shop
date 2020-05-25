@@ -60,11 +60,11 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public List<ShoppingCart> getAll() {
+        List<ShoppingCart> shoppingCarts = new ArrayList<>();
         String query = "SELECT * FROM shopping_carts;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-            List<ShoppingCart> shoppingCarts = new ArrayList<>();
             while (resultSet.next()) {
                 shoppingCarts.add(getCopyOfCart(resultSet));
             }
@@ -131,6 +131,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     }
 
     private List<Product> getProductsOfCart(Long id) {
+        List<Product> products = new ArrayList<>();
         String query = "SELECT products.product_id, products.name, products.price "
                 + "FROM shopping_carts_products"
                 + " INNER JOIN products "
@@ -140,7 +141,6 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
-            List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
                 Long productId = resultSet.getLong("product_id");
                 String name = resultSet.getString("name");
