@@ -29,8 +29,8 @@ CREATE TABLE `internet_shop`.`orders`
     CONSTRAINT `orders_users_fk`
         FOREIGN KEY (`user_id`)
             REFERENCES `internet_shop`.`users` (`user_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
 );
 
 CREATE TABLE `internet_shop`.`orders_products`
@@ -42,13 +42,13 @@ CREATE TABLE `internet_shop`.`orders_products`
     CONSTRAINT `orders_products_orders_fk`
         FOREIGN KEY (`order_id`)
             REFERENCES `internet_shop`.`orders` (`order_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
     CONSTRAINT `orders_products_products_fk`
         FOREIGN KEY (`product_id`)
             REFERENCES `internet_shop`.`products` (`product_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
 );
 
 CREATE TABLE `internet_shop`.`roles`
@@ -73,13 +73,13 @@ CREATE TABLE `internet_shop`.`users_roles`
     CONSTRAINT `users_roles_users_fk`
         FOREIGN KEY (`user_id`)
             REFERENCES `internet_shop`.`users` (`user_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
     CONSTRAINT `users_roles_roles_fk`
         FOREIGN KEY (`role_id`)
             REFERENCES `internet_shop`.`roles` (`role_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
 );
 
 CREATE TABLE `internet_shop`.`shopping_carts`
@@ -91,8 +91,8 @@ CREATE TABLE `internet_shop`.`shopping_carts`
     CONSTRAINT `carts_users_fk`
         FOREIGN KEY (`user_id`)
             REFERENCES `internet_shop`.`users` (`user_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
 );
 
 CREATE TABLE `internet_shop`.`shopping_carts_products`
@@ -104,11 +104,11 @@ CREATE TABLE `internet_shop`.`shopping_carts_products`
     CONSTRAINT `carts_products_carts_fk`
         FOREIGN KEY (`cart_id`)
             REFERENCES `internet_shop`.`shopping_carts` (`cart_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
     CONSTRAINT `carts_products_products_fk`
         FOREIGN KEY (`product_id`)
             REFERENCES `internet_shop`.`products` (`product_id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
 );
