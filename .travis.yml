@@ -1,17 +1,13 @@
 language: java
-sudo: false
-install: true
+jdk:
+  - openjdk11
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=nick97git_internet-shop
+cache:
+  directories:
+    - $HOME/.m2
 addons:
   sonarcloud:
     organization: "nick97-git"
     token:
-      secure: "f7cc66d3e306243214d858bd745987e1bf27ecd0"
-jdk:
-  - openjdk11
-script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
-
+      secure: "ecb1197244a1c835eb553aca277623c0210303d2"
