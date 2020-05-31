@@ -6,8 +6,8 @@ import java.security.SecureRandom;
 import org.apache.log4j.Logger;
 
 public class HashUtil {
-    private static final Logger LOGGER = Logger.getLogger(HashUtil.class);
-    public static String HASH_FUNCTION = "SHA-512";
+    public static final Logger LOGGER = Logger.getLogger(HashUtil.class);
+    private static final String HASH_FUNCTION = "SHA-512";
 
     public static byte[] getSalt() {
         SecureRandom random = new SecureRandom();
